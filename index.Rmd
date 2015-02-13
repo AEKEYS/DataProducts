@@ -1,5 +1,5 @@
 ---
-title       : Pitch Title
+title       : London Crime Analyzer
 subtitle    : A project submission for Coursera class
 author      : AEKEYS
 job         : 
@@ -11,22 +11,18 @@ widgets     : [mathjax, quiz, bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 
----
+--- .class #id
 
-## Read-And-Delete
+## Motivation
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+Recent events in France...
 
 --- .class #id 
 
-## Slide 2
+## Formula
 Using LATEX math formatting...
 
-$x^2$
-
-$$\frac{-b \pm \sqrt{b^2 - 4 a c}}{2a}$$
+$P(x)$
 
 --- &radio
 
