@@ -2,7 +2,7 @@
 title       : LondonCrime
 subtitle    : An app for 'Developing Data Products' on Coursera
 author      : AEKEYS
-job         : Produced 2015-02-17 20:36:35
+job         : Produced 2015-02-18 17:59:23
 logo        : bigben.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
