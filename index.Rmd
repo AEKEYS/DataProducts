@@ -21,7 +21,7 @@ But, the data are not always in formats that best address our interests.
 * How do employment measures relate to crime in London's boroughs?
 * Which boroughs have the highest crime?
 
-<div style='text-align: center;'>
+<div align="center">
     <img src='assets/img/boroughsThumb.png' />
 </div>
 

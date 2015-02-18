@@ -2,7 +2,7 @@
 title       : LondonCrime
 subtitle    : An app for 'Developing Data Products' on Coursera
 author      : AEKEYS
-job         : Produced 2015-02-18 17:59:23
+job         : Produced 2015-02-18 18:07:14
 logo        : bigben.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -21,7 +21,7 @@ But, the data are not always in formats that best address our interests.
 * How do employment measures relate to crime in London's boroughs?
 * Which boroughs have the highest crime?
 
-<div style='text-align: center;'>
+<div align="center">
     <img src='assets/img/boroughsThumb.png' />
 </div>
 
