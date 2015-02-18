@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>London Crime Analyzer</title>
+  <title>LondonCrime</title>
   <meta charset="utf-8">
-  <meta name="description" content="London Crime Analyzer">
+  <meta name="description" content="LondonCrime">
   <meta name="author" content="AEKEYS">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
 <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/morris/css/morris.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
@@ -25,7 +26,10 @@
     src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  
+  <script src="libraries/widgets/morris/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/morris/js/raphael-2.1.0.min.js"></script>
+<script src="libraries/widgets/morris/js/morris.min.js"></script>
+
 
 </head>
 <body style="opacity: 0">
@@ -37,9 +41,9 @@
     <img src="assets/img/bigben.png">
   </aside>
   <hgroup class="auto-fadein">
-    <h1>London Crime Analyzer</h1>
-    <h2>A project submission for Coursera class</h2>
-    <p>AEKEYS<br/></p>
+    <h1>LondonCrime</h1>
+    <h2>An app for 'Developing Data Products' on Coursera</h2>
+    <p>AEKEYS<br/>Produced 2015-02-17 20:36:35</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -51,7 +55,17 @@
     <h2>Motivation</h2>
   </hgroup>
   <article data-timings="">
-    <p>Recent events in France...</p>
+    <p>London&#39;s open data initiative makes it easy to obtain information.
+But, the data are not always in formats that best address our interests.</p>
+
+<ul>
+<li>How do employment measures relate to crime in London&#39;s boroughs?</li>
+<li>Which boroughs have the highest crime?</li>
+</ul>
+
+<div style='text-align: center;'>
+    <img src='assets/img/boroughsThumb.png' />
+</div>
 
   </article>
   <!-- Presenter Notes -->
@@ -59,12 +73,22 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Formula</h2>
+    <h2>Pitch</h2>
   </hgroup>
   <article data-timings="">
-    <p>Using LATEX math formatting...</p>
+    <p>Now, with LondonCrime -- newly available on Shiny Apps -- </p>
 
-<p>\(P(x)\)</p>
+<p><strong>YOU</strong> can compare crime rates with other important statistics!</p>
+
+<div align="center">
+<a href="http://aekeys.shinyapps.io/LondonCrime">http://aekeys.shinyapps.io/LondonCrime</a>
+</div>
+
+<p></p>
+
+<div align="center">
+    <img src='assets/img/london_sky.jpg' />
+</div>
 
   </article>
   <!-- Presenter Notes -->
@@ -72,34 +96,45 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Question 1</h2>
+    <h2>How it works</h2>
   </hgroup>
   <article data-timings="">
-    
-<div class="quiz quiz-single well ">
-  <p>What is the secret to life, the universe, and everything?</p>
+    <ul>
+<li>LondonCrime obtains data from <a href="http://data.london.gov.uk">http://data.london.gov.uk</a>;<br></li>
+<li>cleans it up using tidyr, reshape2, and dplyr;<br></li>
+</ul>
 
-<ol>
-<li>Godammit, be kind!</li>
-<li><em>42</em></li>
-<li>Love thy neighbor</li>
-<li>Obey your wife</li>
-</ol>
+<pre><code class="r">boroughs &lt;- melt(boroughs, id=c(&quot;Borough&quot;,&quot;InnerOuter&quot;),
+                 variable.name=&quot;type_year&quot;,
+                 value.name=&quot;Value&quot;)
 
-  <button class="quiz-submit btn btn-primary">Submit</button>
-  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
-  <button class="quiz-show-answer btn btn-success">Show Answer</button>
-  <button class="quiz-clear btn btn-danger">Clear</button>
-  
-  <div class="quiz-hint">
-  <p>See you at the restaurant at the end of the universe.</p>
+boroughs &lt;- separate(boroughs, type_year, into=c(&quot;Type&quot;,&quot;Year&quot;))
 
-</div>
-<div class="quiz-explanation">
-  <p>The answer comes from Douglas Adams&#39; famous Hitchhiker&#39;s Guide to the Galaxy</p>
+boroughs &lt;- dcast(boroughs, Borough + InnerOuter + Year ~ Type,
+                  value.var = &quot;Value&quot;)
+</code></pre>
 
-</div>
-</div>
+<ul>
+<li>and then generates awesome interactive charts using rCharts!<br></li>
+</ul>
+
+<pre><code class="r">             m1 &lt;- mPlot(x=&quot;date&quot;,y=c(&quot;Employment&quot;,&quot;Crime&quot;),type=&quot;Line&quot;,
+                         boroughs=subset(data, Borough==&quot;Westminster&quot;))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example Result!</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Crime, Youth Unemployment in Westminster</h3>
+
+<iframe src="code/m1.html" width=100%, height=600></iframe>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -116,14 +151,20 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Formula'>
+        data-slide=2 title='Pitch'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Question 1'>
+        data-slide=3 title='How it works'>
          3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example Result!'>
+         4
       </a>
     </li>
   </ul>
