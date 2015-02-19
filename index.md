@@ -2,7 +2,7 @@
 title       : LondonCrime
 subtitle    : An app for 'Developing Data Products' on Coursera
 author      : AEKEYS
-job         : Produced 2015-02-18 18:07:14
+job         : Produced 2015-02-18 23:24:34
 logo        : bigben.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -22,7 +22,7 @@ But, the data are not always in formats that best address our interests.
 * Which boroughs have the highest crime?
 
 <div align="center">
-    <img src='assets/img/boroughsThumb.png' />
+    <img src='assets/img/boroughsThumb.jpg' />
 </div>
 
 

@@ -22,7 +22,7 @@ But, the data are not always in formats that best address our interests.
 * Which boroughs have the highest crime?
 
 <div align="center">
-    <img src='assets/img/boroughsThumb.png' />
+    <img src='assets/img/boroughsThumb.jpg' />
 </div>
 
 
